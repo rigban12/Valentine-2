@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Favorite Person ❤️</title>
+    <style>
+        :root {
+            --primary-pink: #ffafbd;
+            --deep-rose: #ffc3a0;
+            --text-color: #d81b60;
+            --soft-white: rgba(255, 255, 255, 0.95);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, var(--primary-pink), var(--deep-rose));
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            text-align: center;
+            color: var(--text-color);
+            overflow-x: hidden;
+        }
+
+        /* PAGE 1: THE QUESTION */
+        #step-1 {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .card {
+            background: var(--soft-white);
+            padding: 2.5rem 1.5rem;
+            border-radius: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 320px;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .character {
+            font-size: 4.5rem;
+            margin-bottom: 15px;
+            animation: bounce 2s infinite ease-in-out;
+        }
+
+        /* PAGE 2: THE GALLERY */
+        #step-2 {
+            display: none;
+            padding: 40px 15px;
+            animation: slideUp 0.8s ease-out;
+        }
+
+        .gallery-container {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            align-items: center;
+            margin-top: 30px;
+        }
+
+        .photo-frame {
+            background: white;
+            padding: 12px 12px 45px 12px;
+            border-radius: 2px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            width: 85%;
+            max-width: 300px;
+            position: relative;
+            transform: rotate(var(--r));
+            transition: transform 0.3s;
+        }
+
+        .photo-frame img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border: 1px solid #f9f9f9;
+        }
+
+        .photo-frame::after {
+            content: "💖";
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1.2rem;
+        }
+
+        /* Buttons */
+        .btn-group {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        button {
+            padding: 18px;
+            border: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            color: white;
+            cursor: pointer;
+            background: #ff4081;
+            box-shadow: 0 4px 15px rgba(255, 64, 129, 0.4);
+            transition: transform 0.2s;
+        }
+
+        button:active { transform: scale(0.95); }
+
+        /* Animations */
+        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideUp { from { transform: translateY(40px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        
+        .heart-float {
+            position: fixed;
+            pointer-events: none;
+            z-index: 100;
+            animation: floatUp 3s forwards linear;
+        }
+
+        @keyframes floatUp { to { transform: translateY(-110vh) rotate(360deg); opacity: 0; } }
+
+        h1 { font-size: 1.7rem; line-height: 1.3; margin: 10px 0; }
+        h2 { font-size: 2.2rem; margin-bottom: 5px; text-shadow: 1px 1px white; }
+        p { font-style: italic; opacity: 0.9; }
+    </style>
+</head>
+<body>
+
+    <div id="step-1">
+        <div class="card">
+            <div class="character">🧸💖🐱</div>
+            <h1>Will you be my Valentine?</h1>
+            <div class="btn-group">
+                <button onclick="nextStep()">Yes</button>
+                <button onclick="nextStep()" style="background: #e91e63;">absolutely YES</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="step-2">
+        <div class="character">🥰✨🌸</div>
+        <h2>I love you!</h2>
+        <p>You make every day feel like a dream...</p>
+        
+        <div class="gallery-container">
+            <div class="photo-frame" style="--r: -2deg"><img src="https://i.postimg.cc/yxZjQtDG/photo1.jpg"></div>
+            <div class="photo-frame" style="--r: 3deg"><img src="https://i.postimg.cc/T3994r3c/photo2.jpg"></div>
+            <div class="photo-frame" style="--r: -1.5deg"><img src="https://i.postimg.cc/4xZPP8s6/photo3.jpg"></div>
+            <div class="photo-frame" style="--r: 2deg"><img src="https://i.postimg.cc/1Rnv3nv6/photo5.jpg"></div>
+            <div class="photo-frame" style="--r: -3deg"><img src="https://i.postimg.cc/Hsb3QGGR/photo4.jpg"></div>
+            <div class="photo-frame" style="--r: 1.5deg"><img src="https://i.postimg.cc/y8PPbF8P/photo6.jpg"></div>
+            <div class="photo-frame" style="--r: -2deg"><img src="https://i.postimg.cc/wjVVGhjQ/photo7.jpg"></div>
+        </div>
+        
+        <div style="padding: 100px 20px; font-weight: bold; font-size: 1.2rem;">
+            Happy Valentine's Day! <br> 🧸❤️🐱
+        </div>
+    </div>
+
+    <script>
+        function nextStep() {
+            // Burst of hearts effect
+            for(let i=0; i<40; i++) {
+                setTimeout(createHeart, i * 60);
+            }
+
+            // Smooth transition to gallery
+            setTimeout(() => {
+                document.getElementById('step-1').style.display = 'none';
+                document.getElementById('step-2').style.display = 'block';
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }, 600);
+        }
+
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'heart-float';
+            heart.innerHTML = ['❤️','💖','✨','🌸','🧸'][Math.floor(Math.random()*5)];
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.top = '100vh';
+            heart.style.fontSize = (Math.random() * 20 + 20) + 'px';
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 3000);
+        }
+    </script>
+</body>
+</html>
